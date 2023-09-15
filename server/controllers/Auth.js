@@ -149,7 +149,7 @@ exports.login = async(req, res) => {
             {
                 success : true,
                 token,
-                isPresentUser,
+                user : isPresentUser,
                 message : "Login Successfully",
             }
         )

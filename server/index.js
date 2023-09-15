@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const cors = require("cors");
 const ConnectDB = require("./config/database");
 const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 4000;
@@ -22,6 +23,11 @@ ConnectDB();
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.use(
+	cors({
+		credentials:true,
+	})
+)
 
 app.use(
 	fileUpload({
