@@ -6,6 +6,8 @@ import OpenRoute from "./components/core/Auth/OpenRoute"
 import { useDispatch, useSelector } from "react-redux"
 
 // Pages
+import VerifyEmail from "./pages/VerifyEmail"
+import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -16,7 +18,7 @@ function App() {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.profile)
   return (
-    <>
+    <div className="flex min-h-screen w-screen flex-col">
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,8 +34,24 @@ function App() {
             </OpenRoute>
           }
         />
+        <Route
+          path="signup"
+          element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="verify-email"
+          element={
+            <OpenRoute>
+              <VerifyEmail />
+            </OpenRoute>
+          }
+        />
       </Routes>
-    </>
+    </div>
   )
 }
 

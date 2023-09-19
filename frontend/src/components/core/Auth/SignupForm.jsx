@@ -6,14 +6,10 @@ import { useNavigate } from "react-router-dom"
 
 import { sendOtp } from "../../../services/operations/authApi"
 import { setSignupData } from "../../../slices/authSlice"
-import { ROLE } from "../../../utils/constants"
 
 function SignupForm() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  // student or instructor
-  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT)
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -45,8 +41,7 @@ function SignupForm() {
       return
     }
     const signupData = {
-      ...formData,
-      role,
+      ...formData
     }
 
     // Setting signup data to state
@@ -63,30 +58,13 @@ function SignupForm() {
       password: "",
       confirmPassword: "",
     })
-    setAccountType(ROLE.STUDENT)
   }
-
-  // data to pass to Tab component
-  const tabData = [
-    {
-      id: 1,
-      tabName: "Student",
-      type: ROLE.STUDENT,
-    },
-    {
-      id: 2,
-      tabName: "Instructor",
-      type: ROLE.ADMIN,
-    },
-  ]
 
   return (
     <div>
-      {/* Tab */}
-      <Tab tabData={tabData} field={accountType} setField={setAccountType} />
       {/* Form */}
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
-        <div className="flex gap-x-4">
+        <div className="grid md:grid-cols-2 md:gap-6 gap-y-4">
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
               First Name <sup className="text-pink-200">*</sup>
@@ -98,7 +76,7 @@ function SignupForm() {
               value={firstName}
               onChange={handleOnChange}
               placeholder="Enter first name"
-              className="form-style w-full"
+              className="w-[100%] shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
             />
           </label>
           <label>
@@ -112,7 +90,7 @@ function SignupForm() {
               value={lastName}
               onChange={handleOnChange}
               placeholder="Enter last name"
-              className="form-style w-full"
+              className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
             />
           </label>
         </div>
@@ -127,10 +105,10 @@ function SignupForm() {
             value={email}
             onChange={handleOnChange}
             placeholder="Enter email address"
-            className="form-style w-full"
+            className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
           />
         </label>
-        <div className="flex gap-x-4">
+        <div className="grid md:grid-cols-2 md:gap-6 gap-y-4">
           <label className="relative">
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
               Create Password <sup className="text-pink-200">*</sup>
@@ -142,7 +120,7 @@ function SignupForm() {
               value={password}
               onChange={handleOnChange}
               placeholder="Enter Password"
-              className="form-style w-full !pr-10"
+              className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -166,7 +144,7 @@ function SignupForm() {
               value={confirmPassword}
               onChange={handleOnChange}
               placeholder="Confirm Password"
-              className="form-style w-full !pr-10"
+              className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -182,7 +160,7 @@ function SignupForm() {
         </div>
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+          className="mt-6 rounded-[8px] bg-gradient-to-r from-yellow-100 via-yellow-100 to-yellow-200 py-[8px] px-[12px] font-medium text-white shadow-xl shadow-shadowColor"
         >
           Create Account
         </button>
