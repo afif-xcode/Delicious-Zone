@@ -1,12 +1,12 @@
-import signupImg from "../assets/Images/signup.webp"
+import signupImg from "../assets/Images/signupImage.jpg"
 import Template from "../components/core/Auth/Template"
 
 function Signup() {
   return (
     <Template
-      title="Join the millions learning to code with StudyNotion for free"
-      description1="Build skills for today, tomorrow, and beyond."
-      description2="Education to future-proof your career."
+      title="Join DeliciousZone Today!"
+      description1="Create Your Account."
+      description2="Unlock a world of culinary delights and exclusive offers. Sign up now to enjoy a host of benefits"
       image={signupImg}
       formType="signup"
     />

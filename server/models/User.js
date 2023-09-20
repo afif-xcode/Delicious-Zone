@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema(
             type : String,
             enum : ["Admin", "Customer"],
             required : true,
+            default : 'Customer'
         },
         additionalDetails : {
             type: mongoose.Schema.Types.ObjectId,

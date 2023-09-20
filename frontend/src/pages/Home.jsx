@@ -4,6 +4,7 @@ import { productData, responsive } from "../data/data";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+
 const Home = () => {
   return (
     <>

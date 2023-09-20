@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
-import { login } from "../../../services/operations/authAPI"
+import { login } from "../../../services/operations/authApi"
 
 function LoginForm() {
   const navigate = useNavigate()
@@ -45,7 +45,7 @@ function LoginForm() {
           value={email}
           onChange={handleOnChange}
           placeholder="Enter email address"
-          className="form-style w-full"
+          className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
         />
       </label>
       <label className="relative">
@@ -59,7 +59,7 @@ function LoginForm() {
           value={password}
           onChange={handleOnChange}
           placeholder="Enter Password"
-          className="form-style w-full !pr-10"
+          className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
         />
         <span
           onClick={() => setShowPassword((prev) => !prev)}
@@ -72,14 +72,14 @@ function LoginForm() {
           )}
         </span>
         <Link to="/forgot-password">
-          <p className="mt-1 ml-auto max-w-max text-xs text-blue-100">
+          <p className="mt-3 ml-auto max-w-max text-xs text-blue-900">
             Forgot Password
           </p>
         </Link>
       </label>
       <button
         type="submit"
-        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+        className="mt-6 rounded-[8px] bg-gradient-to-r from-yellow-100 via-yellow-100 to-yellow-200 py-[8px] px-[12px] font-medium text-white shadow-xl shadow-shadowColor"
       >
         Sign In
       </button>

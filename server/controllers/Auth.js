@@ -14,7 +14,7 @@ exports.signup = async(req, res) => {
         // Fetch all data req.body
         const {firstName, lastName, email, password, confirmPassword, role, otp} = req.body;
         // Validate data
-        if(!firstName || !lastName || !email || !password || !confirmPassword || !role || !otp) {
+        if(!firstName || !lastName || !email || !password || !confirmPassword || !otp) {
             return res.status(StatusCodes.BAD_REQUEST).send({
                 success : false,
                 message : "All fields are require",
@@ -44,10 +44,10 @@ exports.signup = async(req, res) => {
               message: "The OTP is not valid",
             });
         }
-        else if(otp !== responce[0].otp) {
+        else if(Number(otp) !== responce[0].otp) {
             return res.status(StatusCodes.BAD_REQUEST).json({
               success: false,
-              message: "The OTP is not valid",
+              message: "The OTP is not valid 1",
             });
         }
 

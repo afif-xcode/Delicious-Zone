@@ -11,10 +11,10 @@ function getRandomInt(max) {
 exports.createCategory = async (req, res) => {
   try {
     // Take the category details
-    const { categoryName, description } = req.body;
+    const { categoryName, subHeading, description } = req.body;
 
     // check if all the fields are there
-    if (!categoryName || !description) {
+    if (!categoryName || !subHeading || !description) {
       res.status(StatusCodes.BAD_REQUEST).json({
         success: false,
         message: "Please make sure all fields are filled.",
@@ -23,6 +23,7 @@ exports.createCategory = async (req, res) => {
 
     const newCategory = new Category({
       categoryName,
+      subHeading,
       description,
     });
 
@@ -49,13 +50,14 @@ exports.editCategory = async (req, res) => {
     const { categoryId } = req.body;
 
     //get the category details from req.body
-    const { categoryName, description } = req.body;
+    const { categoryName, subHeading, description } = req.body;
 
     // Find the category by its ID and update its properties
     const updatedCategory = await Category.findByIdAndUpdate(
       categoryId,
       {
         categoryName,
+        subHeading,
         description,
       },
       { new: true }
