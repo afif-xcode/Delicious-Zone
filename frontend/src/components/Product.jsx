@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Product({ imageurl, name, price, description }) {
   return (
-    <div className="shadow-[0_4px_8px_0_rgba(0,0,0,0.2)] max-w-xs text-center mx-4 my-auto">
+    <div className="shadow-[2px_4px_8px_2px_rgba(0,0,0,0.9)] max-w-xs text-center mx-4 my-auto">
       <img
         className="w-full h-[16em] object-cover"
         src={imageurl}

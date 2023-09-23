@@ -2,13 +2,10 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import OpenRoute from "./components/core/Auth/OpenRoute";
 
-
-
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 
 // Pages
-<<<<<<< HEAD
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -17,16 +14,16 @@ import Contact from "./pages/Contact";
 // Components
 
 // Data
-=======
-import VerifyEmail from "./pages/VerifyEmail"
-import Signup from "./pages/Signup"
-import Login from "./pages/Login"
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Contact from "./pages/Contact"
->>>>>>> 8b4589c273d29b56dda6bcfc286dd4535bc63b80
+import VerifyEmail from "./pages/VerifyEmail";
+import Signup from "./pages/Signup";
+// import Login from "./pages/Login";
+// import Home from "./pages/Home";
+// import About from "./pages/About";
+// import Contact from "./pages/Contact";
 
-function App() {
+import React from "react";
+
+const App = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.profile);
@@ -64,13 +61,8 @@ function App() {
           }
         />
       </Routes>
-<<<<<<< HEAD
-    </>
-  );
-=======
     </div>
-  )
->>>>>>> 8b4589c273d29b56dda6bcfc286dd4535bc63b80
-}
+  );
+};
 
 export default App;
