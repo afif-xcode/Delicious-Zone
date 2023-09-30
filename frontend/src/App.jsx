@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom"
 import Navbar from "./components/common/Navbar"
 import OpenRoute from "./components/core/Auth/OpenRoute"
+import PrivateRoute from "./components/core/Auth/PrivateRoute"
 
 // Redux
 import { useDispatch, useSelector } from "react-redux"
@@ -12,6 +13,11 @@ import Login from "./pages/Login"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
+import Dashboard from "./pages/Dashboard"
+
+// components
+import MyProfile from './components/core/Dashboard/MyProfile'
+// import Setting from "./components/core/Dashboard/Settings"
 
 function App() {
   const navigate = useNavigate();
@@ -50,6 +56,19 @@ function App() {
             </OpenRoute>
           }
         />
+
+        {/* Private Route - for Only Logged in User */}
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          {/* Route for all users */}
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+          {/* <Route path="dashboard/Settings" element={<Settings />} /> */}
+        </Route>
       </Routes>
     </div>
   )

@@ -81,7 +81,7 @@ const Navbar = () => {
                                                             ))}
                                                         </>
                                                         ) : (
-                                                        <p className="text-center ">No Courses Found</p>
+                                                        <p className="text-center ">No Category Found</p>
                                                         )}
                                                     </div>
                                                 </div>

@@ -14,7 +14,7 @@ export default {
       transparent: "#ffffff00",
       primaryColor : "#FF9F00",
       secondColor : "#FFCE66",
-      backgroundColor : "#FFEFCC",
+      backgroundColor : "#FDEDCA",
       shadowColor : "#FFE7B3",
       textColor : "#353535",
       subtext : "#1F1F1F",
