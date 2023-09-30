@@ -1,22 +1,16 @@
-import ChangeProfilePicture from "./ChangeProfilePicture"
-import DeleteAccount from "./DeleteAccount"
-import EditProfile from "./EditProfile"
-import UpdatePassword from "./UpdatePassword"
+import React from 'react'
+import { ChangeProfilePicture } from './ChangeProfilePicture'
+import EditProfile from './EditProfile'
+import {UpdatePassword} from './UpdatePassword'
 
-export default function Settings() {
+
+export default function Setting() {
   return (
     <>
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
-        Edit Profile
-      </h1>
-      {/* Change Profile Picture */}
-      <ChangeProfilePicture />
-      {/* Profile */}
-      <EditProfile />
-      {/* Password */}
-      <UpdatePassword />
-      {/* Delete Account */}
-      <DeleteAccount />
+        <h1 className='mb-14 text-3xl font-medium'>Edit Profile</h1>
+        <ChangeProfilePicture></ChangeProfilePicture>
+        <EditProfile></EditProfile>
+        <UpdatePassword></UpdatePassword>
     </>
   )
 }

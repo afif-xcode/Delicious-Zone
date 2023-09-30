@@ -1,37 +1,38 @@
+import React from 'react'
 import { useForm } from "react-hook-form"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom"
 
-import { updateProfile } from "../../../../services/operations/SettingsAPI"
-import IconBtn from "../../../Common/IconBtn"
+import { updateProfile } from "../../../../services/operations/settingApi"
+import IconBtn from "../../../common/IconBtn"
 
 const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"]
 
-export default function EditProfile() {
-  const { user } = useSelector((state) => state.profile)
-  const { token } = useSelector((state) => state.auth)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+const EditProfile = () => {
+    const {user} = useSelector((state) => state.profile);
+    const {token} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
 
-  const submitProfileForm = async (data) => {
-    // console.log("Form Data - ", data)
-    try {
-      dispatch(updateProfile(token, data))
-    } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
-    }
-  }
+    const submitProfileForm = async (data) => {
+        // console.log("Form Data - ", data)
+        try {
+          dispatch(updateProfile(token, data))
+        } catch (error) {
+          console.log("ERROR MESSAGE - ", error.message)
+        }
+      }
   return (
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+        <div className="my-10 flex flex-col gap-y-6 rounded-md border border-shadowColor shadow-shadowColor bg-white p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">
             Profile Information
           </h2>
@@ -45,7 +46,7 @@ export default function EditProfile() {
                 name="firstName"
                 id="firstName"
                 placeholder="Enter first name"
-                className="form-style"
+                className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
                 {...register("firstName", { required: true })}
                 defaultValue={user?.firstName}
               />
@@ -64,7 +65,7 @@ export default function EditProfile() {
                 name="lastName"
                 id="lastName"
                 placeholder="Enter first name"
-                className="form-style"
+                className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
                 {...register("lastName", { required: true })}
                 defaultValue={user?.lastName}
               />
@@ -85,7 +86,7 @@ export default function EditProfile() {
                 type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
-                className="form-style"
+                className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
                 {...register("dateOfBirth", {
                   required: {
                     value: true,
@@ -112,7 +113,7 @@ export default function EditProfile() {
                 type="text"
                 name="gender"
                 id="gender"
-                className="form-style"
+                className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
                 {...register("gender", { required: true })}
                 defaultValue={user?.additionalDetails?.gender}
               >
@@ -142,7 +143,7 @@ export default function EditProfile() {
                 name="contactNumber"
                 id="contactNumber"
                 placeholder="Enter Contact Number"
-                className="form-style"
+                className="w-full shadow-sm shadow-shadowColor outline-none border border-yellow-100 text-sm rounded-lg p-2.5"
                 {...register("contactNumber", {
                   required: {
                     value: true,
@@ -159,25 +160,7 @@ export default function EditProfile() {
                 </span>
               )}
             </div>
-            <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="about" className="lable-style">
-                About
-              </label>
-              <input
-                type="text"
-                name="about"
-                id="about"
-                placeholder="Enter Bio Details"
-                className="form-style"
-                {...register("about", { required: true })}
-                defaultValue={user?.additionalDetails?.about}
-              />
-              {errors.about && (
-                <span className="-mt-1 text-[12px] text-yellow-100">
-                  Please enter your About.
-                </span>
-              )}
-            </div>
+        
           </div>
         </div>
 
@@ -196,3 +179,5 @@ export default function EditProfile() {
     </>
   )
 }
+
+export default EditProfile

@@ -17,7 +17,7 @@ import Dashboard from "./pages/Dashboard"
 
 // components
 import MyProfile from './components/core/Dashboard/MyProfile'
-// import Setting from "./components/core/Dashboard/Settings"
+import Setting  from "./components/core/Dashboard/Settings/index"
 
 function App() {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ function App() {
         >
           {/* Route for all users */}
           <Route path="dashboard/my-profile" element={<MyProfile />} />
-          {/* <Route path="dashboard/Settings" element={<Settings />} /> */}
+          <Route path="dashboard/Settings" element={<Setting />} />
         </Route>
       </Routes>
     </div>

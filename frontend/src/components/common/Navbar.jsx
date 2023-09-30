@@ -26,12 +26,12 @@ const Navbar = () => {
             setLoading(true);
             try {
                 const res = await fetchProductCategories();
-                console.log("course details res: ", res)
+                console.log("product category: ", res)
                 setSubLinks(res);
                 console.log(subLinks);
             } catch (error) {
                 console.log(error);
-                console.log("Could not fetch Course Details")
+                console.log("Could not fetch category")
             }
             setLoading(false);
         })()

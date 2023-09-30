@@ -2,7 +2,8 @@ import { RiEditBoxLine } from "react-icons/ri"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import IconBtn from "../../Common/IconBtn"
+import { formattedDate } from "../../../utils/dateFormatter"
+import IconBtn from "../../common/IconBtn"
 
 export default function MyProfile() {
   const { user } = useSelector((state) => state.profile)
@@ -36,28 +37,7 @@ export default function MyProfile() {
           <RiEditBoxLine />
         </IconBtn>
       </div>
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border border-shadowColor shadow-shadowColor bg-white p-8 px-12">
-        <div className="flex w-full items-center justify-between">
-          <p className="text-lg font-semibold text-richblack-5">About</p>
-          <IconBtn
-            text="Edit"
-            onclick={() => {
-              navigate("/dashboard/settings")
-            }}
-          >
-            <RiEditBoxLine />
-          </IconBtn>
-        </div>
-        <p
-          className={`${
-            user?.additionalDetails?.about
-              ? "text-richblack-5"
-              : "text-richblack-400"
-          } text-sm font-medium`}
-        >
-          {user?.additionalDetails?.about ?? "Write Something About Yourself"}
-        </p>
-      </div>
+
       <div className="my-10 flex flex-col gap-y-10 rounded-md border border-shadowColor shadow-shadowColor bg-white p-8 px-12">
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold5">
@@ -108,10 +88,10 @@ export default function MyProfile() {
             </div>
             <div>
               <p className="mb-2 text-sm">Date Of Birth</p>
-              {/* <p className="text-sm font-medium text-richblack-5">
+              <p className="text-sm font-medium text-richblack-5">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ??
                   "Add Date Of Birth"}
-              </p> */}
+              </p>
             </div>
           </div>
         </div>

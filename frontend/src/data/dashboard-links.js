@@ -31,7 +31,7 @@ export const sidebarLinks = [
   {
     id: 5,
     name: "Orders",
-    path: "/dashboard/enrolled-courses",
+    path: "/dashboard/orders",
     type: ROLE.CUSTOMER,
     icon: "VscPackage",
   },
