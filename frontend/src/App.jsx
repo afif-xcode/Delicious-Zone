@@ -1,12 +1,36 @@
+
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Navbar from "./components/common/Navbar";
+import OpenRoute from "./components/core/Auth/OpenRoute";
 import { Routes, Route, useNavigate } from "react-router-dom"
 import Navbar from "./components/common/Navbar"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
 
 // Redux
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 
 // Pages
+
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
+// Components
+
+// Data
+import VerifyEmail from "./pages/VerifyEmail";
+import Signup from "./pages/Signup";
+// import Login from "./pages/Login";
+// import Home from "./pages/Home";
+// import About from "./pages/About";
+// import Contact from "./pages/Contact";
+
+import React from "react";
+
+const App = () => {
+
 import VerifyEmail from "./pages/VerifyEmail"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
@@ -20,9 +44,10 @@ import MyProfile from './components/core/Dashboard/MyProfile'
 import Setting  from "./components/core/Dashboard/Settings/index"
 
 function App() {
+
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const { user } = useSelector((state) => state.profile)
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.profile);
   return (
     <div className="flex min-h-screen w-screen flex-col">
       <Navbar></Navbar>
@@ -71,7 +96,7 @@ function App() {
         </Route>
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

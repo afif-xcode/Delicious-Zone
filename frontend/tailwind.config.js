@@ -1,23 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: ['Poppins'],
-   },
+      sans: ["Poppins"],
+    },
     colors: {
       white: "#fff",
       black: "#000",
       transparent: "#ffffff00",
-      primaryColor : "#FF9F00",
-      secondColor : "#FFCE66",
-      backgroundColor : "#FDEDCA",
-      shadowColor : "#FFE7B3",
-      textColor : "#353535",
-      subtext : "#1F1F1F",
+      primaryColor: "#FF9F00",
+      secondColor: "#FFCE66",
+      backgroundColor: "#FFEFCC",
+      shadowColor: "#FFE7B3",
+      textColor: "#353535",
+      subtext: "#1F1F1F",
       pink: "#EF476F",
       blue: {
         5: "#EAF5FF",
@@ -79,17 +76,20 @@ export default {
         5: "#FFF970",
         25: "#FFE83D",
         50: "#FFD60A",
-        75 : "#FFB30E",
+        75: "#FFB30E",
         100: "#FFB800",
         200: "#FF8A00",
+        300: "rgb(253 224 71)",
+        400: "rgb(250 204 21)",
+        900: "rgb(113 63 18)",
       },
     },
     extend: {
       maxWidth: {
         maxContent: "1260px",
-        maxContentTab: "650px"
+        maxContentTab: "650px",
       },
     },
   },
   plugins: [],
-}
+};
