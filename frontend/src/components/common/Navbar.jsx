@@ -26,12 +26,12 @@ const Navbar = () => {
             setLoading(true);
             try {
                 const res = await fetchProductCategories();
-                console.log("course details res: ", res)
+                console.log("product category: ", res)
                 setSubLinks(res);
                 console.log(subLinks);
             } catch (error) {
                 console.log(error);
-                console.log("Could not fetch Course Details")
+                console.log("Could not fetch category")
             }
             setLoading(false);
         })()
@@ -81,7 +81,7 @@ const Navbar = () => {
                                                             ))}
                                                         </>
                                                         ) : (
-                                                        <p className="text-center ">No Courses Found</p>
+                                                        <p className="text-center ">No Category Found</p>
                                                         )}
                                                     </div>
                                                 </div>
