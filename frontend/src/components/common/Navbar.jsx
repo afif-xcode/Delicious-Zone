@@ -14,6 +14,8 @@ import ProfileDropdown from "../core/Auth/ProfileDropdown"
 const Navbar = () => {
     const { token } = useSelector((state) => state.auth)
     const { user } = useSelector((state) => state.profile)
+    const {cart} = useSelector((state) => state.cart)
+    const totalCartProduct = cart.length;
 
     const [subLinks, setSubLinks] = useState([])
     const [loading, setLoading] = useState(false)
@@ -26,9 +28,7 @@ const Navbar = () => {
             setLoading(true);
             try {
                 const res = await fetchProductCategories();
-                console.log("product category: ", res)
                 setSubLinks(res);
-                console.log(subLinks);
             } catch (error) {
                 console.log(error);
                 console.log("Could not fetch category")
@@ -105,9 +105,15 @@ const Navbar = () => {
                 {/* Login/SignUp/Dashboard */}
                 <div className='hidden gap-x-4 items-center md:flex'>
                     {user && user?.accountType !== ROLE.ADMIN && (
-                        <Link to="/cart" className="relative">
-                        <div className='border px-2 py-2 rounded-full'>
-                            <AiOutlineShoppingCart className="text-2xl text-black" />
+                        <Link to="/dashboard/cart" className="relative">
+                        <div className='relative'>
+                            {/* <span className='absolute bottom-2 left-4 px-2 py-1 text-primaryColor rounded-full'>{totalCartProduct}</span> */}
+                            <AiOutlineShoppingCart className="text-3xl text-black" />
+                            {totalCartProduct > 0 && (
+                                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-secondColor text-center text-xs font-bold">
+                                {totalCartProduct}
+                                </span>
+                            )}
                         </div>
                         {1 > 0 && (
                             <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
@@ -115,6 +121,7 @@ const Navbar = () => {
                         )}
                         </Link>
                     )}
+
                     {token == null && (
                         <Link to="/login">
                             <button className='flex border border-shadowColor items-center gap-x-2 shadow-lg shadow-shadowColor bg-white px-[20px] py-[10px] text-primaryColor rounded-md'>

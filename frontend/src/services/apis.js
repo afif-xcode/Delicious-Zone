@@ -18,3 +18,8 @@ export const settingEndpoints = {
     UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
     CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
 }
+
+// PRODUCT ENDPOINTS
+export const productEndpoints = {
+    GET_ALL_PRODUCTS_API: BASE_URL + "/products/getAllProduct"
+}
