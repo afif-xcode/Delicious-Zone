@@ -1,12 +1,21 @@
 import React from "react";
-import {useDispatch} from "react-redux"
+import toast from "react-hot-toast";
+import {useDispatch, useSelector} from "react-redux"
 
 import {addToCart} from '../../slices/cartSlice'
+import { useNavigate } from "react-router-dom";
 
 export default function Product({product}) {
+  const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
+    if(token === null) {
+      toast.error("Login to Your Account");
+      navigate('/login')
+      return;
+    }
     dispatch(addToCart(product))
   }
   return (

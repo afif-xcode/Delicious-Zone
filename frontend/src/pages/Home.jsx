@@ -67,15 +67,17 @@ const Home = () => {
           <h3 className="text-primaryColor text-2xl font-black flex justify-center text-center m-8 p-4">
             Popular Items
           </h3>
-          <Carousel
-            showDots={false}
-            responsive={responsive}
-            infinite={true}
-            autoPlay={true}
-            autoPlaySpeed={1500}
-          >
-            {product}
-          </Carousel>
+          <div className="relative mx-auto w-11/12">
+            <Carousel
+              showDots={false}
+              responsive={responsive}
+              infinite={true}
+              autoPlay={true}
+              autoPlaySpeed={1500}
+            >
+              {product}
+            </Carousel>
+          </div>
         </div>
       </div>
     </div>

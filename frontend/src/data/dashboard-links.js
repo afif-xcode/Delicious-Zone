@@ -16,14 +16,14 @@ export const sidebarLinks = [
   },
   {
     id: 3,
-    name: "My Courses",
+    name: "Customers Orders",
     path: "/dashboard/admin/products",
     type: ROLE.ADMIN,
     icon: "VscVm",
   },
   {
     id: 4,
-    name: "Add Course",
+    name: "Products",
     path: "/dashboard/add-products",
     type: ROLE.ADMIN,
     icon: "VscAdd",
