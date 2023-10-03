@@ -21,5 +21,7 @@ export const settingEndpoints = {
 
 // PRODUCT ENDPOINTS
 export const productEndpoints = {
-    GET_ALL_PRODUCTS_API: BASE_URL + "/products/getAllProduct"
+    GET_ALL_PRODUCTS_API: BASE_URL + "/products/getAllProduct",
+    ADD_PRODUCT_API : BASE_URL + "/products/createProduct",
+    DELETE_PRODUCT_API : BASE_URL + "/products/deleteProduct"
 }

@@ -21,12 +21,20 @@ export default function Product({product}) {
   return (
     <div className="flex flex-col gap-y-2 rounded-md items-center justify-center">
       <img
-        className="w-[300px] h-[250px] object-cover rounded-t-md"
+        className="w-[300px] h-[200px] object-cover rounded-t-md"
         src={product.thumbnail.image_link}
         alt="product image"
       />
-      <h2 className="text-lg text-center font-bold">{product.productName}</h2>
-      <p>{product.description}</p>
+      <h2 className="text-lg text-left font-bold">{product.productName}</h2>
+      <p className="text-subtext">
+        {product.description.split(" ").length > 10
+          ? product.description
+              .split(" ")
+              .slice(0, 10)
+              .join(" ") + "..."
+          : product.description
+        }
+      </p>
 
       <div className="flex justify-around">
         <p className="text-[grey] text-[22px]">{product.price}</p>

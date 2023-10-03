@@ -14,7 +14,7 @@ export default {
       backgroundColor: "#FFEFCC",
       shadowColor: "#FFE7B3",
       textColor: "#353535",
-      subtext: "#1F1F1F",
+      subtext: "#858585",
       pink: "#EF476F",
       blue: {
         5: "#EAF5FF",

@@ -1,5 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
+import { ROLE } from "./utils/constants";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +21,7 @@ import OpenRoute from "./components/core/Auth/OpenRoute"
 import MyProfile from './components/core/Dashboard/MyProfile'
 import Setting  from "./components/core/Dashboard/Settings/index"
 import Cart from "./components/core/Dashboard/Cart/index"
+import AddProduct from "./components/core/Dashboard/AddProduct/index"
 
 function App() {
 
@@ -71,7 +73,21 @@ function App() {
           {/* Route for all users */}
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/Settings" element={<Setting />} />
-          <Route path="dashboard/cart" element={<Cart />} />
+
+          {/*Route only for customer */}
+          {
+            user?.role === ROLE.CUSTOMER && (
+              <>
+                <Route path="dashboard/cart" element={<Cart />} />
+              </>
+            )
+          }
+          {user?.role === ROLE.ADMIN && (
+            <>
+              <Route path="dashboard/add-products" element={<AddProduct />} />
+            </>
+          )}
+          
         </Route>
       </Routes>
     </div>

@@ -104,7 +104,7 @@ const Navbar = () => {
 
                 {/* Login/SignUp/Dashboard */}
                 <div className='hidden gap-x-4 items-center md:flex'>
-                    {user && user?.accountType !== ROLE.ADMIN && (
+                    {user && user?.role !== ROLE.ADMIN && (
                         <Link to="/dashboard/cart" className="relative">
                         <div className='relative'>
                             {/* <span className='absolute bottom-2 left-4 px-2 py-1 text-primaryColor rounded-full'>{totalCartProduct}</span> */}

@@ -63,11 +63,11 @@ const Home = () => {
       <Featured></Featured>
       
       <div className="">
-        <div className="p-10 ">
+        <div className="p-10 relative mx-auto w-11/12 max-w-maxContent flex flex-col">
           <h3 className="text-primaryColor text-2xl font-black flex justify-center text-center m-8 p-4">
             Popular Items
           </h3>
-          <div className="relative mx-auto w-11/12">
+          <div className="relative">
             <Carousel
               showDots={false}
               responsive={responsive}
