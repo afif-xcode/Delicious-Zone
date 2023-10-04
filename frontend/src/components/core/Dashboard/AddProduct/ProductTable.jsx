@@ -8,7 +8,7 @@ import { formatDate } from "../../../../services/formatDate"
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { deleteProduct } from "../../../../services/operations/productApi";
 
-const ProductTable = ({products, loading, setLoading, setConfirmationModal, setAddProductModal}) => {
+const ProductTable = ({products, setProducts, loading, setLoading, setConfirmationModal, setAddProductModal}) => {
     const {token} = useSelector((state) => state.auth)
 
     const handleProductDelete = async (productId) => {
@@ -16,6 +16,10 @@ const ProductTable = ({products, loading, setLoading, setConfirmationModal, setA
         try {
           setConfirmationModal(null)
           const res = await deleteProduct({prodID : productId}, token);
+          const filtered = products.filter((product) => {
+            return product._id != productId;
+          })
+          setProducts(filtered);
         } catch(error) {
           console.log(error);
           console.log("deleter unsuccessfully");

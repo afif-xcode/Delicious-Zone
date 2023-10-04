@@ -67,12 +67,12 @@ export default function index () {
             Add Product
             </button>
       </div>
-      <ProductTable products={products} loading={loading} setLoading={setLoading} setConfirmationModal={setConfirmationModal} setAddProductModal={setAddProductModal}/>
+      <ProductTable products={products} setProducts={setProducts} loading={loading} setLoading={setLoading} setConfirmationModal={setConfirmationModal} setAddProductModal={setAddProductModal}/>
       <div>
               
       </div>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
-      {addProductModal && <AddProduct modalData={addProductModal} setAddProductModal={setAddProductModal} productCategory={productCategory} setRender={setRender} />}
+      {addProductModal && <AddProduct modalData={addProductModal} setAddProductModal={setAddProductModal} productCategory={productCategory} products={products} setProducts={setProducts}/>}
     </div>
   )
 }

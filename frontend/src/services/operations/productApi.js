@@ -39,7 +39,7 @@ export const addProduct = async (data, token) => {
         throw new Error("Could Not Add Product Details")
       }
       toast.success("Product Added Successfully")
-      result = response?.data?.data
+      result = response?.data;
     } catch (error) {
       console.log("CREATE PRODUCT API ERROR............", error)
       toast.error(error.message)

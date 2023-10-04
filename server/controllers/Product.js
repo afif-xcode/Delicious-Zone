@@ -67,6 +67,7 @@ exports.createProduct = async (req, res) => {
     // return responce
     return res.status(StatusCodes.OK).json({
       success: true,
+      productDetails,
       message: "Product Created successfully",
     });
   } catch (error) {
@@ -196,7 +197,7 @@ exports.deleteProduct = async (req, res) => {
 exports.getAllProduct = async (req, res) => {
   try {
     // Fetch all the products from the database
-    const existingProducts = await Product.find({}).populate('category');
+    const existingProducts = await Product.find({}).sort({ createdAt: -1 }).populate('category');
     if (!existingProducts) {
       res.status(StatusCodes.NOT_FOUND).json({
         success: false,

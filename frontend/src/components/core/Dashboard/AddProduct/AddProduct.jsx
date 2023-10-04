@@ -7,7 +7,7 @@ import Upload from './Upload'
 import ChipInput from './ChipInput'
 import { useSelector } from "react-redux"
 
-const AddProduct = ({modalData, setAddProductModal, productCategory}) => {
+const AddProduct = ({modalData, setAddProductModal, productCategory, products, setProducts}) => {
     const {token} = useSelector((state) => state.auth)
     const [loading, setLoading] = useState(false)
 
@@ -33,6 +33,7 @@ const AddProduct = ({modalData, setAddProductModal, productCategory}) => {
         
         setLoading(true)
         const result = await addProduct(formData, token)
+        setProducts([result.productDetails, ...products]);
         setAddProductModal(null);
         setLoading(false)
     }
