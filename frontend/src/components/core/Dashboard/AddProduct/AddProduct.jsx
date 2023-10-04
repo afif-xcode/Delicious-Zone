@@ -164,7 +164,7 @@ const AddProduct = ({modalData, setAddProductModal, productCategory}) => {
                 />
                 {/* Buttons */}
                 <div className="flex justify-end gap-x-3">
-                    <button type="submit" onClick={modalData?.submitBtn} className="flex items-center rounded-[8px] bg-gradient-to-r from-yellow-100 to-yellow-200 text-white shadow-lg font-medium shadow-shadowColor cursor-pointer gap-x-2 py-2 px-5">Submit</button>
+                    <button type="submit" className="flex items-center rounded-[8px] bg-gradient-to-r from-yellow-100 to-yellow-200 text-white shadow-lg font-medium shadow-shadowColor cursor-pointer gap-x-2 py-2 px-5">Submit</button>
                     <button className="cursor-pointer rounded-md bg-white shadow-inner py-[8px] px-[20px] font-semibold"
                         onClick={modalData?.cancelBtn}
                     >Cancle</button>

@@ -50,7 +50,7 @@ const Navbar = () => {
                 </Link>
 
                 <nav className='hidden md:flex'>
-                    <ul className='flex gap-x-6 text-subtext font-sans font-light'>
+                    <ul className='flex gap-x-6 text-black font-sans font-light'>
                         {
                             NavbarLinks.map((link, index) => (
                                 <li key={index}>
