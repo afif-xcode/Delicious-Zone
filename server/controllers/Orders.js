@@ -80,8 +80,8 @@ exports.createOrder = async(req, res) => {
 // show order by id
 exports.getOrderDetails = async (req,res) => {
     try {
-        // get order id from req.params 
-        const orderId = req.body.orderId;
+        // get order id from req.body 
+        const {orderId} = req.body;
         const orderDetails = await Orders.findById(orderId).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).exec();
         if(!orderDetails) {
             return res.status(StatusCodes.NOT_FOUND).json(
@@ -136,7 +136,7 @@ exports.showAllOrdersofUser = async(req,res) => {
             {
                 success : true,
                 message : "Order fetched successfully",
-                data : {
+                orders : {
                     userActiveOrders,
                     userCompletedOrders,
                     userCancelledOrders
@@ -160,7 +160,7 @@ exports.updateOrderStatus = async (req, res) => {
     try {
     const { status, orderId } = req.body;
       // Validate the provided status
-      const allowedStatusValues = ['Ordered', 'Confirmed', 'Shipped', 'Cancelled', 'Completed'];
+      const allowedStatusValues = ['Ordered', "Confirmed", "Shipped", "Delivery", "Completed", 'Cancelled'];
       if (!allowedStatusValues.includes(status)) {
         return res.status(StatusCodes.BAD_REQUEST).json(
             {
@@ -185,6 +185,11 @@ exports.updateOrderStatus = async (req, res) => {
             }
         );
       }
+
+      // Emit event
+      const eventEmitter = req.app.get('eventEmitter');
+      eventEmitter.emit('orderUpdated', { id: req.body.orderId, status: req.body.status });
+
       res.status(StatusCodes.OK).json(
         {
             success : true,
@@ -222,7 +227,7 @@ exports.showAllOrders = async(req,res) => {
             {
                 success : true,
                 message : "Order fetched successfully",
-                data : {
+                orders : {
                     userActiveOrders,
                     userCompletedOrders,
                     userCancelledOrders

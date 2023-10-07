@@ -17,7 +17,7 @@ export const sidebarLinks = [
   {
     id: 3,
     name: "Customers Orders",
-    path: "/dashboard/admin/products",
+    path: "/dashboard/admin/orders",
     type: ROLE.ADMIN,
     icon: "VscVm",
   },

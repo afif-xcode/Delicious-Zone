@@ -1,7 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import { ROLE } from "./utils/constants";
-
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,12 +21,16 @@ import MyProfile from './components/core/Dashboard/MyProfile'
 import Setting  from "./components/core/Dashboard/Settings/index"
 import Cart from "./components/core/Dashboard/Cart/index"
 import AddProduct from "./components/core/Dashboard/AddProduct/index"
+import AdminOrder from "./components/core/Dashboard/Orders/Admin/index";
+import CustomerOrders from "./components/core/Dashboard/Orders/Customer/index";
+import SingleOrder from "./components/core/Dashboard/Orders/Customer/SingleOrder";
+import SingleOrderAdmin from "./components/core/Dashboard/Orders/Admin/SingleOrderAdmin"
 
 function App() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.profile);
+
   return (
     <div className="flex min-h-screen w-screen flex-col">
       <Navbar></Navbar>
@@ -79,12 +82,16 @@ function App() {
             user?.role === ROLE.CUSTOMER && (
               <>
                 <Route path="dashboard/cart" element={<Cart />} />
+                <Route path="dashboard/orders" element={<CustomerOrders />} />
+                <Route path="dashboard/orders/:id" element={<SingleOrder />} />
               </>
             )
           }
           {user?.role === ROLE.ADMIN && (
             <>
               <Route path="dashboard/add-products" element={<AddProduct />} />
+              <Route path="dashboard/admin/orders" element={<AdminOrder />} />
+              <Route path="/dashboard/orders/admin/:id" element={<SingleOrderAdmin />} />
             </>
           )}
           

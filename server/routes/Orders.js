@@ -11,8 +11,8 @@ const {
 const { auth, isCustomer, isAdmin } = require("../middlewares/auth");
 
 router.post('/creatOrder', auth, isCustomer, createOrder);
-router.post('/updateOrderStatus', auth, isAdmin, updateOrderStatus);
-router.get('/getOrder', auth, isCustomer, getOrderDetails);
+router.put('/updateOrderStatus', auth, isAdmin, updateOrderStatus);
+router.post('/getOrder', auth, getOrderDetails);
 router.get('/getAllOrders', auth, isCustomer, showAllOrdersofUser);
 router.get('/admin/Orders', auth, isAdmin, showAllOrders);
 

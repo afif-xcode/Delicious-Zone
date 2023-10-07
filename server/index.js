@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 4000;
 const morgan = require("morgan");
 const fileUpload = require("express-fileupload");
 const { cloudinaryConnect } = require("./config/cloudinary");
+const Emitter = require('events');
 
 const userRoutes = require("./routes/User");
 const productRoutes = require("./routes/Product");
@@ -28,6 +29,10 @@ app.use(
 		credentials:true,
 	})
 )
+
+// Event emitter
+const eventEmitter = new Emitter()
+app.set('eventEmitter', eventEmitter);
 
 app.use(
 	fileUpload({
@@ -51,6 +56,28 @@ app.get("/", (req, res) => {
   res.send("Hello World").status(200);
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Your server is runnig on port ${PORT}`);
 });
+
+const io = require("socket.io")(server, {
+	cors: {
+		origin: "*"
+	},
+})
+
+
+io.on("connection", (socket) => {
+	console.log("Socket Connected")
+	socket.on('join', function (data) {
+		socket.join(data.orderId); // We are using room of socket io
+		console.log("room join")
+	});
+})
+
+
+
+eventEmitter.on('orderUpdated', (data) => {
+    io.in(`${data.id}`).emit('orderUpdated', data);
+})
+

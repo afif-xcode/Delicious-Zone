@@ -25,3 +25,12 @@ export const productEndpoints = {
     ADD_PRODUCT_API : BASE_URL + "/products/createProduct",
     DELETE_PRODUCT_API : BASE_URL + "/products/deleteProduct"
 }
+
+// ORDERS ENDPOINTS 
+export const orderEndpoints = {
+    CREATE_ORDER_API : BASE_URL + "/order/creatOrder",
+    UPDATE_ORDER_STATUS_API : BASE_URL + "/order/updateOrderStatus",
+    GET_ORDER_DETAILS_API : BASE_URL + "/order/getOrder",
+    GET_ALL_ORDERS_API : BASE_URL + "/order/getAllOrders",
+    GET_ADMIN_ORDERS_API : BASE_URL + "/order/admin/Orders"
+}
