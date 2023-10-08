@@ -72,7 +72,7 @@ const Navbar = () => {
                                                             {subLinks
                                                             ?.map((subLink, i) => (
                                                                 <Link
-                                                                to={`/category/`}
+                                                                to={`/catalog/${subLink.categoryName}/${subLink._id}`}
                                                                 className="rounded-lg bg-transparent py-4 pl-4 hover:bg-[#FDEDCA]"
                                                                 key={i}
                                                                 >

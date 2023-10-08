@@ -3,6 +3,7 @@ const BASE_URL =  "http://localhost:4000/api/v1"
 // CATEGORY ENDPOINTS
 export const categoryEndpoints = {
     PRODUCT_CATEGORY_API : BASE_URL + "/category/showAllCategories",
+    GET_CATEGORY_PAGE_DETAILS_API : BASE_URL + "/category/getCategoryPageDetails"
 }
 
 // AUTH ENDPOINTS

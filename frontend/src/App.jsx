@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import VerifyEmail from "./pages/VerifyEmail";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard"
+import Catalog from "./pages/Catalog";
 
 // components
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="catalog/:categoryName/:categoryId" element={<Catalog />} />
 
         {/* Open Route - for Only Non Logged in User */}
         <Route

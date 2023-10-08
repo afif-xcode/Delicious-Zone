@@ -1,35 +1,9 @@
-// import React from "react";
-// import Featured from '../components/core/Home/Featured';
-// import Slider from "../components/core/Home/Slider";
-
-
-// const Home = () => {
-//   return (
-//     <div className="w-full mx-auto items-center justify-center">
-//       <Featured></Featured>
-      
-//       <div className="">
-//         <div className="">
-//           <h3 className="text-primaryColor text-2xl font-black flex justify-center text-center m-8 p-4">
-//             Popular Items
-//           </h3>
-//           <div className="">
-//             <Slider></Slider>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
-
 import React, {useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { productData, responsive } from "../data/product-data";
-import Product from "../components/Product/Product";
+import { responsive } from "../data/product-data";
+import ProductCard from "../components/core/Catalog/ProductCard";
+import ProductSlider from "../components/core/Catalog/ProductSlider";
 import Featured from '../components/core/Home/Featured';
 
 import { getAllProducts } from "../services/operations/productApi";
@@ -52,7 +26,7 @@ const Home = () => {
   }, [])
 
   const product = products.map((product) => (
-    <Product
+    <ProductCard
       key={product._id}
       product={product}
     />
@@ -73,7 +47,7 @@ const Home = () => {
               responsive={responsive}
               infinite={true}
               autoPlay={true}
-              autoPlaySpeed={1500}
+              autoPlaySpeed={2000}
             >
               {product}
             </Carousel>

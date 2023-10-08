@@ -14,7 +14,7 @@ const { auth, isAdmin } = require("../middlewares/auth");
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.post('/editCategory', auth, isAdmin, editCategory);
 router.get("/showAllCategories", showAllCategories)
-router.get("/getCategoryPageDetails", categoryPageDetails)
+router.post("/getCategoryPageDetails", categoryPageDetails)
 
 
 module.exports = router;
