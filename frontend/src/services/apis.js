@@ -35,3 +35,8 @@ export const orderEndpoints = {
     GET_ALL_ORDERS_API : BASE_URL + "/order/getAllOrders",
     GET_ADMIN_ORDERS_API : BASE_URL + "/order/admin/Orders"
 }
+
+// ORDERS ADDRESS 
+export const addressEndpoints = {
+    GET_ADDRESS_API : BASE_URL + "/address/getAllAddress",
+}

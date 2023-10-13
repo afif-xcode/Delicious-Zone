@@ -17,7 +17,7 @@ function ProductCard({ product }) {
     const count = GetAvgRating(product.ratingAndReviews)
     setAvgReviewCount(count)
   }, [product])
-  console.log("count............", avgReviewCount)
+
 
   const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch();

@@ -26,6 +26,7 @@ import AdminOrder from "./components/core/Dashboard/Orders/Admin/index";
 import CustomerOrders from "./components/core/Dashboard/Orders/Customer/index";
 import SingleOrder from "./components/core/Dashboard/Orders/Customer/SingleOrder";
 import SingleOrderAdmin from "./components/core/Dashboard/Orders/Admin/SingleOrderAdmin"
+import NewOrder from "./components/core/Dashboard/Orders/Customer/CreateOrders/index"
 
 function App() {
   const navigate = useNavigate();
@@ -86,6 +87,7 @@ function App() {
                 <Route path="dashboard/cart" element={<Cart />} />
                 <Route path="dashboard/orders" element={<CustomerOrders />} />
                 <Route path="dashboard/orders/:id" element={<SingleOrder />} />
+                <Route path="dashboard/order/new-order" element={<NewOrder/>} />
               </>
             )
           }

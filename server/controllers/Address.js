@@ -176,7 +176,7 @@ exports.deleteAddressById = async (req, res) => {
 exports.getAllAddresses = async (req, res) => {
   try {
     const userId = req.user.id;
-    const addresses = await Address.find({user : userId});
+    const addresses = await Address.find({user : userId}).populate('user');
     if (!addresses) {
       res.status(StatusCodes.NOT_FOUND).json({
         success: false,
