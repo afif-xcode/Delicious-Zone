@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { useForm } from "react-hook-form"
+import { useState } from "react"
 import { MdNavigateNext } from "react-icons/md"
 import { useDispatch, useSelector } from "react-redux"
 import GetAvgRating from "../../../../../../../utils/avgRating"
@@ -7,13 +6,16 @@ import RatingStars from "../../../../../../common/RatingStars"
 
 import { setOrder, setStep } from "../../../../../../../slices/orderSlice"
 import IconBtn from "../../../../../../common/IconBtn"
+import { useNavigate } from "react-router-dom"
 
 export default function CourseInformationForm() {
   const getRating = (data) => {
     const count = GetAvgRating(data)
     return count;
   }
+  const navigate = useNavigate();
   const dispatch = useDispatch()
+
   const { cart, total, totalItems } = useSelector((state) => state.cart)
   const [loading, setLoading] = useState(false)
 
@@ -22,13 +24,15 @@ export default function CourseInformationForm() {
     const orderData = {
       products: cart,
       totalAmount: total,
-      shippingAdress: null,
+      shippingAddress: null,
       paymentMod: null,
     }
     setLoading(true)
     dispatch(setStep(2))
     dispatch(setOrder(orderData))
     setLoading(false)
+
+    console.log(orderData);
   }
 
   return (
@@ -100,7 +104,7 @@ export default function CourseInformationForm() {
       {/* Next Button */}
       <div className="flex justify-end gap-x-2">
         <button
-          onClick={() => dispatch(setStep(2))}
+          onClick={() => navigate('/dashboard/cart')}
           disabled={loading}
           className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
         >

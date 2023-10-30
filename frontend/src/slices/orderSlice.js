@@ -19,7 +19,7 @@ const orderSlice = createSlice({
     setPaymentLoading: (state, action) => {
       state.paymentLoading = action.payload
     },
-    resetCourseState: (state) => {
+    resetOrderState: (state) => {
       state.step = 1
       state.order = null
     },
@@ -30,7 +30,7 @@ export const {
   setStep,
   setOrder,
   setPaymentLoading,
-  resetCourseState,
+  resetOrderState,
 } = orderSlice.actions
 
 export default orderSlice.reducer

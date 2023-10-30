@@ -9,14 +9,15 @@ exports.createOrder = async(req, res) => {
     try {
         // fetch all the data
         const userId = req.user.id;
-        const {products, totalAmount, paymentMod, shippingAdress} = req.body;
+        const {products, totalAmount, paymentMod, shippingAddress} = req.body;
+        console.log(req.body);
 
         // validate data
         if (
             products.length == 0 ||
             !totalAmount ||
             !paymentMod ||
-            !shippingAdress
+            !shippingAddress
         ) {
             return res.status(StatusCodes.NOT_FOUND).json({
             success: false,
@@ -40,7 +41,7 @@ exports.createOrder = async(req, res) => {
                 })),
                 totalAmount,
                 paymentMod,
-                shippingAddress: shippingAdress,
+                shippingAddress: shippingAddress,
             }
         )
         // insert order id on user model 
@@ -53,6 +54,9 @@ exports.createOrder = async(req, res) => {
             },
             { new: true }
           );
+
+        const eventEmitter = req.app.get('eventEmitter');
+        eventEmitter.emit('newOrder', { newOrder });
 
         return res.status(StatusCodes.OK).json(
             {
@@ -120,17 +124,17 @@ exports.showAllOrdersofUser = async(req,res) => {
         const userActiveOrders = await Orders.find({
             user: userId,
             status: { $nin: ['Cancelled', 'Completed'] }
-        }).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).exec();
+        }).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).sort({ createdAt: -1 }).exec();
 
         const userCompletedOrders = await Orders.find({
         user: userId,
         status: "Completed"
-        }).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).exec();
+        }).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).sort({ createdAt: -1 }).exec();
 
         const userCancelledOrders = await Orders.find({
             user: userId,
             status: "Cancelled"
-        }).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).exec();
+        }).populate([{path : 'user'}, {path : 'products', populate : 'product'}, {path : "shippingAddress"}]).sort({ createdAt: -1 }).exec();
 
         return res.status(StatusCodes.OK).json(
             {

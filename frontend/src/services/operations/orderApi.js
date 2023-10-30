@@ -10,6 +10,30 @@ const {
     GET_ADMIN_ORDERS_API
 } = orderEndpoints
 
+// create order status 
+export const  createOrder = async (token, formData) => {
+    const toastId = toast.loading("Loading...")
+    let result = false;
+    try {
+        const response = await apiConnector("POST", CREATE_ORDER_API, formData, {
+        Authorization: `Bearer ${token}`,
+        })
+        console.log("CREATE_ORDER_API API RESPONSE............", response)
+
+        if (!response.data.success) {
+        throw new Error(response.data.message)
+        }
+        toast.dismiss(toastId)
+        toast.success("Order Placed")
+        result = true;
+    } catch (error) {
+        console.log("CREATE_ORDER_API API ERROR............", error)
+        toast.dismiss(toastId)
+        toast.error("Could Not Place Order")
+    }
+    return result;
+}
+
 // get all order of customer
 export const  getAllOrder = async (token) =>  {
     let result = null;

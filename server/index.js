@@ -16,6 +16,7 @@ const categoryRoutes = require('./routes/Category');
 const addressRoutes = require('./routes/Address');
 const orderRoutes = require('./routes/Orders');
 const profileRoutes = require('./routes/Profile');
+const paymentRoutes = require('./routes/Payments');
 
 // Connect with Db
 ConnectDB();
@@ -51,6 +52,7 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/address", addressRoutes);
 app.use("/api/v1/order", orderRoutes);
 app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/payment", paymentRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World").status(200);
@@ -79,5 +81,9 @@ io.on("connection", (socket) => {
 
 eventEmitter.on('orderUpdated', (data) => {
     io.in(`${data.id}`).emit('orderUpdated', data);
+})
+
+eventEmitter.on('newOrder', (data) => {
+    io.in(`${data.id}`).emit('newOrder', data);
 })
 

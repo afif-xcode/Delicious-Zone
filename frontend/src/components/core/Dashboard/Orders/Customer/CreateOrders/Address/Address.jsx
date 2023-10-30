@@ -31,17 +31,21 @@ export default function CourseBuilderhtmlForm() {
   // handle htmlForm submission
   const handleSelectAddress = (e) => {
     setAddressId(e.target.value)
+    console.log(addressId);
   }
 
   const goToNext = () => {
+    console.log(addressId)
     const orderData = {
-      products: order.cart,
-      totalAmount: order.total,
-      shippingAdress: addressId,
+      products: order.products,
+      totalAmount: order.totalAmount,
+      shippingAddress: addressId,
       paymentMod: null,
     }
-    setOrder(orderData);
+    setLoading(true)
     dispatch(setStep(3))
+    dispatch(setOrder(orderData))
+    setLoading(false)
   }
 
   const goBack = () => {

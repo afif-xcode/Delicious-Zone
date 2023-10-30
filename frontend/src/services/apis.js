@@ -40,3 +40,11 @@ export const orderEndpoints = {
 export const addressEndpoints = {
     GET_ADDRESS_API : BASE_URL + "/address/getAllAddress",
 }
+
+// PAYMENT ENDPOINTS
+export const productPaymentEndpoints = {
+    PRODUCT_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+    PRODUCT_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+    SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
+  }
+  
